@@ -1,4 +1,3 @@
-import dateutil.relativedelta
 from flask import Flask, render_template, request
 import requests
 from bs4 import BeautifulSoup
@@ -12,6 +11,7 @@ import datetime
 import psycopg2
 import time
 import psycopg2.sql
+import os
 
 def is_published_date_good(published_date):
     published_date = published_date.split()
@@ -301,14 +301,17 @@ def scrap_jobs_from_kalibrr(job_field):
 
 def scrap_jobs_from_linkedin(job_field):
     try:
+        email = os.environ["EMAIL"]
+        password = os.environ["PASS"]
+        
         # Login
         driver = webdriver.Chrome(webdriver.ChromeOptions())
         driver.get("https://linkedin.com/uas/login")
         time.sleep(5)
         username = driver.find_element("id", "username")
-        username.send_keys("mckarlson3@gmail.com") 
+        username.send_keys(email) 
         pword = driver.find_element("id", "password")
-        pword.send_keys("Akusange0")    
+        pword.send_keys(password)    
         driver.find_element("xpath", "//button[@type='submit']").click()
         time.sleep(5)
         driver.get("https://www.linkedin.com/jobs/search/?keywords={}".format(job_field))  
