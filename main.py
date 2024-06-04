@@ -1,5 +1,9 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 import datetime
 import psycopg2
 import time
@@ -192,7 +196,10 @@ def get_published_date4(published_date):
 
 def scrap_jobs_from_karir(job_field):
     url = "https://karir.com/search-lowongan?keyword={}".format(job_field)
-    driver = webdriver.Chrome()
+    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
     driver.get(url)
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, 'html.parser')
@@ -221,7 +228,10 @@ def scrap_jobs_from_karir(job_field):
 def scrap_jobs_from_jobstreet(job_field):
     try:
         url = "https://www.jobstreet.co.id/id/{}-jobs".format(job_field)
-        driver = webdriver.Chrome()
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get(url)
         page_source = driver.page_source
         soup = BeautifulSoup(page_source, 'html.parser')
@@ -257,7 +267,10 @@ def scrap_jobs_from_jobstreet(job_field):
 def scrap_jobs_from_kalibrr(job_field):
     try:
         url = "https://www.kalibrr.com/home/te/{}".format(job_field)
-        driver = webdriver.Chrome()
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get(url)
         page_source = driver.page_source
         soup = BeautifulSoup(page_source, 'html.parser')
@@ -268,7 +281,10 @@ def scrap_jobs_from_kalibrr(job_field):
         for i in range(len(links)):
             try:
                 links[i] = "https://www.kalibrr.com" + links[i]["href"]
-                driver = webdriver.Chrome()
+                chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+                chrome_options = Options()
+                chrome_options.add_argument("--headless")
+                driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
                 driver.get(links[i])
                 page_source = driver.page_source
                 soup = BeautifulSoup(page_source, 'html.parser')
@@ -298,7 +314,10 @@ def scrap_jobs_from_linkedin(job_field):
         password = os.environ["PASS"]
         
         # Login
-        driver = webdriver.Chrome(webdriver.ChromeOptions())
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get("https://linkedin.com/uas/login")
         time.sleep(5)
         username = driver.find_element("id", "username")
