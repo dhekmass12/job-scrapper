@@ -32,6 +32,7 @@ jobs:
         run: |
           git config --local user.email "dimas.tri01@ui.ac.id"
           git config --local user.name "dhekmass12"
+          git pull origin master
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
 
