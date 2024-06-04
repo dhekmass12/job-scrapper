@@ -1,12 +1,5 @@
-from flask import Flask, render_template, request
-import requests
 from bs4 import BeautifulSoup
-import csv
-import hashlib, io, pandas as pd
 from selenium import webdriver
-from selenium.webdriver import ChromeOptions
-from pathlib import Path
-from PIL import Image
 import datetime
 import psycopg2
 import time
