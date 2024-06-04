@@ -199,6 +199,7 @@ def scrap_jobs_from_karir(job_field):
     chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument('--remote-debugging-pipe')
     driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
     driver.get(url)
     page_source = driver.page_source
@@ -231,6 +232,7 @@ def scrap_jobs_from_jobstreet(job_field):
         chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument('--remote-debugging-pipe')
         driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get(url)
         page_source = driver.page_source
@@ -270,6 +272,7 @@ def scrap_jobs_from_kalibrr(job_field):
         chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument('--remote-debugging-pipe')
         driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get(url)
         page_source = driver.page_source
@@ -284,6 +287,7 @@ def scrap_jobs_from_kalibrr(job_field):
                 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
                 chrome_options = Options()
                 chrome_options.add_argument("--headless=new")
+                chrome_options.add_argument('--remote-debugging-pipe')
                 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
                 driver.get(links[i])
                 page_source = driver.page_source
@@ -317,6 +321,7 @@ def scrap_jobs_from_linkedin(job_field):
         chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument('--remote-debugging-pipe')
         driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get("https://linkedin.com/uas/login")
         time.sleep(5)
