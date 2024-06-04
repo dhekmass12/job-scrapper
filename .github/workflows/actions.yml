@@ -2,7 +2,7 @@ name: run main.py
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 jobs:
   build:
@@ -24,6 +24,19 @@ jobs:
           
       - name: execute py script # run main.py
         env:
-          email: ${{ secrets.email }}
-          pass: ${{ secrets.pass }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASS: ${{ secrets.PASS }}
         run: python main.py
+
+      - name: commit files
+        run: |
+          git config --local user.email "dimas.tri01@ui.ac.id"
+          git config --local user.name "dhekmass12"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+          branch: master
