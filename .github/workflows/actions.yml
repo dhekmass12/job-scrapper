@@ -2,8 +2,8 @@ name: run main.py
 
 on:
   - push
-  schedule:
-    - cron: '*/10 * * * *'
+  # schedule:
+  #   - cron: '*/10 * * * *'
 
 jobs:
   build:
