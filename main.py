@@ -196,7 +196,7 @@ def get_published_date4(published_date):
 
 def scrap_jobs_from_karir(job_field):
     url = "https://karir.com/search-lowongan?keyword={}".format(job_field)
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="124.0.6367.208").install())
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument('--remote-debugging-pipe')
@@ -229,7 +229,7 @@ def scrap_jobs_from_karir(job_field):
 def scrap_jobs_from_jobstreet(job_field):
     try:
         url = "https://www.jobstreet.co.id/id/{}-jobs".format(job_field)
-        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="124.0.6367.208").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument('--remote-debugging-pipe')
@@ -269,7 +269,7 @@ def scrap_jobs_from_jobstreet(job_field):
 def scrap_jobs_from_kalibrr(job_field):
     try:
         url = "https://www.kalibrr.com/home/te/{}".format(job_field)
-        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="124.0.6367.208").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument('--remote-debugging-pipe')
@@ -284,7 +284,7 @@ def scrap_jobs_from_kalibrr(job_field):
         for i in range(len(links)):
             try:
                 links[i] = "https://www.kalibrr.com" + links[i]["href"]
-                chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+                chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="124.0.6367.208").install())
                 chrome_options = Options()
                 chrome_options.add_argument("--headless=new")
                 chrome_options.add_argument('--remote-debugging-pipe')
@@ -318,7 +318,7 @@ def scrap_jobs_from_linkedin(job_field):
         password = os.environ["PASS"]
         
         # Login
-        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="125.0.6422.114").install())
+        chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, driver_version="124.0.6367.208").install())
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument('--remote-debugging-pipe')
